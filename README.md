@@ -1,3 +1,7 @@
+----------------------------------------------------
+boot dev and connect to localhost:3000 for the error
+----------------------------------------------------
+
 # Edge
 
 From "Datum edge". Also represents the 'edge' of our current thinking

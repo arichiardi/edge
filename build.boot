@@ -34,7 +34,7 @@
     [aero "1.0.0-beta2"]
 
     [com.stuartsierra/component "0.3.1"]
-    
+
     [reloaded.repl "0.2.1"]
     [prismatic/schema "1.0.4"]
     [org.clojure/core.async "0.2.374"]
@@ -107,7 +107,7 @@
                                     (concat frontend-deps)
                                     vec)}]
     (comp
-     (serve :dir "target/dev")
+     (serve)
      (watch)
      (speak)
      (with-env
@@ -123,13 +123,10 @@
        (cljs :ids #{"edge"} :optimizations :none))
      (if (> @boot.util/*verbosity* 1)
        (show :fileset true)
-       identity)
-     (target :dir #{"target/dev"}))))
+       identity))))
 
 (deftask dev
   []
   (comp
    (server)
    (frontend)))
-
-
