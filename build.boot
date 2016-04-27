@@ -86,11 +86,13 @@
   (require 'adzerk.boot-cljs
            'adzerk.boot-cljs-repl
            'adzerk.boot-reload
-           'mathias.boot-sassc)
+           'mathias.boot-sassc
+           'pandeiro.boot-http)
   (let [reload (resolve 'adzerk.boot-reload/reload)
         cljs-repl (resolve 'adzerk.boot-cljs-repl/cljs-repl)
         cljs (resolve 'adzerk.boot-cljs/cljs)
         cljs-build-deps (resolve 'adzerk.boot-cljs/deps)
+        serve (resolve 'pandeiro.boot-http/serve)
         sass (resolve 'mathias.boot-sassc/sass)
 
         remove-unneeded-deps (fn [deps]
@@ -105,6 +107,7 @@
                                     (concat frontend-deps)
                                     vec)}]
     (comp
+     (serve :dir "target/dev")
      (watch)
      (speak)
      (with-env
